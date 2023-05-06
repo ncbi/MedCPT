@@ -11,8 +11,8 @@ BioCPT contains:
   - Trained by 18M semantic query-article pairs and localized negatives from the pre-trained dense retriver. 
   
 This directory contains:
-- Code for training the BioCPT retriever at `retriever`.
-- Code for training the BioCPT re-ranker at `reranker` (under construction).
+- Code for training the BioCPT retriever at `./retriever/`.
+- Code for training the BioCPT re-ranker at `./reranker/`. (under construction)
 
 ## Acknowledgments
 
