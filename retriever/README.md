@@ -61,6 +61,62 @@ bash run.sh
 ```
 
 ## Custom usage
+You can also use run `main.py` with other arguments or datasets for custom usage:
+```bash
+$ python main.py --help
+usage: main.py [-h] [--bert_q_path BERT_Q_PATH] [--bert_d_path BERT_D_PATH] [--tokenizer_path TOKENIZER_PATH]
+               --output_dir OUTPUT_DIR [--train_dataset TRAIN_DATASET] [--pmid2info_path PMID2INFO_PATH]
+               [--qid2info_path QID2INFO_PATH] [--max_query_length MAX_QUERY_LENGTH]
+               [--max_doc_length MAX_DOC_LENGTH] [--learning_rate LEARNING_RATE] [--alpha ALPHA]
+               [--per_gpu_train_batch_size PER_GPU_TRAIN_BATCH_SIZE]
+               [--gradient_accumulation_steps GRADIENT_ACCUMULATION_STEPS] [--num_train_epochs NUM_TRAIN_EPOCHS]
+               [--weight_decay WEIGHT_DECAY] [--adam_epsilon ADAM_EPSILON] [--max_grad_norm MAX_GRAD_NORM]
+               [--warmup_steps WARMUP_STEPS] [--logging_steps LOGGING_STEPS] [--save_steps SAVE_STEPS]
+               [--do_lower_case DO_LOWER_CASE] [--seed SEED]
 
-
-
+optional arguments:
+  -h, --help            show this help message and exit
+  --bert_q_path BERT_Q_PATH
+                        The path of the pre-trained query encoder.
+  --bert_d_path BERT_D_PATH
+                        The path of the pre-trained document encoder.
+  --tokenizer_path TOKENIZER_PATH
+                        The path of the tokenizer.
+  --output_dir OUTPUT_DIR
+                        The output directory where the model checkpoints and predictions will be written.
+  --train_dataset TRAIN_DATASET
+                        The path of the training jsonline file.
+  --pmid2info_path PMID2INFO_PATH
+                        The pmid2info json file path.
+  --qid2info_path QID2INFO_PATH
+                        The qid2info json file path.
+  --max_query_length MAX_QUERY_LENGTH
+                        Maximum length of query.
+  --max_doc_length MAX_DOC_LENGTH
+                        Maximum length of documents.
+  --learning_rate LEARNING_RATE
+                        The initial learning rate for Adam.
+  --alpha ALPHA         Alpha in the loss combination.
+  --per_gpu_train_batch_size PER_GPU_TRAIN_BATCH_SIZE
+                        Batch size per GPU/CPU for training.
+  --gradient_accumulation_steps GRADIENT_ACCUMULATION_STEPS
+                        Number of updates steps to accumulate before performing a backward/update pass.
+  --num_train_epochs NUM_TRAIN_EPOCHS
+                        Total number of training epochs to perform.
+  --weight_decay WEIGHT_DECAY
+                        Weight deay if we apply some.
+  --adam_epsilon ADAM_EPSILON
+                        Epsilon for Adam optimizer.
+  --max_grad_norm MAX_GRAD_NORM
+                        Max gradient norm.
+  --warmup_steps WARMUP_STEPS
+                        Linear warmup over warmup_steps.
+  --logging_steps LOGGING_STEPS
+                        Log every X updates steps.
+  --save_steps SAVE_STEPS
+                        Save checkpoint every X updates steps.
+  --do_lower_case DO_LOWER_CASE
+                        Set this flag if you are using an uncased model. Queries are uncased, so setting default
+                        to True.
+  --seed SEED           random seed for initialization
+```
