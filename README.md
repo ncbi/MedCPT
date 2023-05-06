@@ -18,6 +18,10 @@ This directory contains:
 - Code for training the BioCPT retriever at `./retriever/`.
 - Code for training the BioCPT re-ranker at `./reranker/`. (under construction)
 
+## Data availability
+
+Due to privacy concerns, we are not able to release the PubMed user logs. As a surrogate, we provide the question-article pair data from [BioASQ](http://www.bioasq.org/) in this repo as example training datasets.
+
 ## Acknowledgments
 
 This work was supported by the Intramural Research Programs of the National Institutes of Health, National Library of Medicine.
