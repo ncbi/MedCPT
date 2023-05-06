@@ -1,6 +1,9 @@
 # BioCPT
 
-This repo contains the code for training the BioCPT model. BioCPT is a first-of-its-kind Contrastive Pre-trained Transformer model trained with an unprecedented scale of PubMed search logs for zero-shot biomedical information retrieval. 
+## Overview
+BioCPT is a first-of-its-kind Contrastive Pre-trained Transformer model trained with an unprecedented scale of PubMed search logs for zero-shot biomedical information retrieval. 
+
+![image](https://user-images.githubusercontent.com/32558774/236640954-bfa0d9da-50b5-43b3-8326-bf2e3b9f4b33.png)
 
 BioCPT contains:
 - A frist-stage dense retriever
@@ -9,7 +12,9 @@ BioCPT contains:
 - A second-stage re-ranker
   - The BioCPT re-ranker is a transformer cross-encoder that is initialized by [PubMedBERT](https://huggingface.co/microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext).
   - Trained by 18M semantic query-article pairs and localized negatives from the pre-trained dense retriver. 
-  
+
+## Content
+
 This directory contains:
 - Code for training the BioCPT retriever at `./retriever/`.
 - Code for training the BioCPT re-ranker at `./reranker/`. (under construction)
