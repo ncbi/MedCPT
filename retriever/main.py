@@ -180,7 +180,6 @@ def main():
 		default='microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext',
 		help='The path of the tokenizer.'
 	)
-
 	parser.add_argument(
 		"--output_dir",
 		default=None,
@@ -188,19 +187,18 @@ def main():
 		required=True,
 		help="The output directory where the model checkpoints and predictions will be written.",
 	)
-	
 	# Dataset paths
 	parser.add_argument(
 		'--train_dataset',
 		default=None,
 		type=str,
-		help='The path of the training dataset.'
+		help='The path of the training jsonline file.'
 	)
 	parser.add_argument(
-		'--pmid2info_path', default=None, type=str, help="pmid2info json file path"
+		'--pmid2info_path', default=None, type=str, help="The pmid2info json file path."
 	)
 	parser.add_argument(
-		'--qid2info_path', default=None, type=str, help="qid2info json file path"
+		'--qid2info_path', default=None, type=str, help="The qid2info json file path."
 	)
 
 	# Hyper-parameters
@@ -208,13 +206,13 @@ def main():
 		"--max_query_length",
 		default=64,
 		type=int,
-		help="max length of query."
+		help="Maximum length of query."
 	)
 	parser.add_argument(
 		"--max_doc_length",
 		default=512,
 		type=int,
-		help="max length of documents."
+		help="Maximum length of documents."
 	)
 	parser.add_argument("--learning_rate", default=2e-5, type=float, help="The initial learning rate for Adam.")
 	parser.add_argument("--alpha", default=0.8, type=float, help="Alpha in the loss combination.")
