@@ -1,6 +1,7 @@
 # BioCPT retriever
 
-This repo contains the code for training the BioCPT retriever. 
+This repo contains the code for training the BioCPT retriever (Part A in the figure below). 
+![image](https://user-images.githubusercontent.com/32558774/236641890-aaf42b3f-b114-4da1-87c7-a7d47ae29fbb.png)
 
 ## Requirements
 
