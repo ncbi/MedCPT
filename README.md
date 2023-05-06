@@ -4,11 +4,11 @@ This repo contains the code for training the BioCPT model. BioCPT is a first-of-
 
 BioCPT contains:
 - A frist-stage dense retriever
-  - Trained by 255M query-article pairs from PubMed search logs and in-batch negatives. 
   - The BioCPT retriever contains a query encoder and an article encoder, both of which are initialized by PubMedBERT.   
+  - Trained by 255M query-article pairs from PubMed search logs and in-batch negatives. 
 - A second-stage re-ranker
-  - Trained by 18M semantic query-article pairs and localized negatives from the pre-trained dense retriver. 
   - The BioCPT re-ranker is a transformer cross-encoder that is initialized by PubMedBERT.
+  - Trained by 18M semantic query-article pairs and localized negatives from the pre-trained dense retriver. 
 
 ## Acknowledgments
 
