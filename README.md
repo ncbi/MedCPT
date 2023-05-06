@@ -1,11 +1,10 @@
-# BioCPT
+# BioCPT: Contrastive Pre-trained Transformers with Large-scale PubMed Search Logs for Zero-shot Biomedical Information Retrieval
 
 ## Overview
-BioCPT is a first-of-its-kind Contrastive Pre-trained Transformer model trained with an unprecedented scale of PubMed search logs for zero-shot biomedical information retrieval. 
 
 ![image](https://user-images.githubusercontent.com/32558774/236640954-bfa0d9da-50b5-43b3-8326-bf2e3b9f4b33.png)
 
-BioCPT consists of:
+BioCPT is a first-of-its-kind Contrastive Pre-trained Transformer model trained with an unprecedented scale of PubMed search logs for zero-shot biomedical information retrieval. BioCPT consists of:
 - A frist-stage dense retriever (BioCPT retriever)
   - Contains a query encoder (QEnc) and an article encoder (DEnc), both initialized by [PubMedBERT](https://huggingface.co/microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext).   
   - Trained by 255M query-article pairs from PubMed search logs and in-batch negatives. 
