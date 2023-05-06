@@ -5,13 +5,13 @@ BioCPT is a first-of-its-kind Contrastive Pre-trained Transformer model trained 
 
 ![image](https://user-images.githubusercontent.com/32558774/236640954-bfa0d9da-50b5-43b3-8326-bf2e3b9f4b33.png)
 
-BioCPT contains:
-- A frist-stage dense retriever
-  - The BioCPT retriever contains a query encoder and an article encoder, both of which are initialized by [PubMedBERT](https://huggingface.co/microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext).   
+BioCPT consists of:
+- A frist-stage dense retriever (BioCPT retriever)
+  - Contains a query encoder (QEnc) and an article encoder (DEnc), both initialized by [PubMedBERT](https://huggingface.co/microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext).   
   - Trained by 255M query-article pairs from PubMed search logs and in-batch negatives. 
-- A second-stage re-ranker
-  - The BioCPT re-ranker is a transformer cross-encoder that is initialized by [PubMedBERT](https://huggingface.co/microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext).
-  - Trained by 18M semantic query-article pairs and localized negatives from the pre-trained dense retriver. 
+- A second-stage re-ranker (BioCPT re-ranker)
+  - A transformer cross-encoder (CrossEnc) initialized by [PubMedBERT](https://huggingface.co/microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext).
+  - Trained by 18M semantic query-article pairs and localized negatives from the pre-trained BioCPT retriever. 
 
 ## Content
 
