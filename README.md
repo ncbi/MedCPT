@@ -15,12 +15,12 @@ BioCPT is a first-of-its-kind Contrastive Pre-trained Transformer model trained 
 ## Content
 
 This directory contains:
-- Code for training the BioCPT retriever at `./retriever/`.
-- Code for training the BioCPT re-ranker at `./reranker/`.
+- Code for training the BioCPT [retriever](./retriever).
+- Code for training the BioCPT [re-ranker](./reranker/).
 
 ## Data availability
 
-Due to [privacy](https://www.nlm.nih.gov/web_policies.html#privacy_security) concerns, we are not able to release the PubMed user logs. As a surrogate, we provide the question-article pair data from [BioASQ](http://www.bioasq.org/) in this repo as example training datasets.
+Due to [privacy](https://www.nlm.nih.gov/web_policies.html#privacy_security) concerns, we are not able to release the PubMed user logs. As a surrogate, we provide the question-article pair data from [BioASQ](http://www.bioasq.org/) in this repo as example training datasets. You can convert your data to the example data formats and train the BioCPT model.
 
 ## Acknowledgments
 
