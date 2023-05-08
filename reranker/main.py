@@ -299,18 +299,17 @@ def main():
 		"--max_query_length",
 		default=32,
 		type=int,
-		help="max length of query."
+		help="Max length of query."
 	)
 	parser.add_argument(
 		"--max_doc_length",
 		default=480,
 		type=int,
-		help="max length of documents."
+		help="Max length of documents."
 	)
 
 	parser.add_argument("--learning_rate", default=2e-5, type=float, help="The initial learning rate for Adam.")
 	parser.add_argument("--num_neg_pmids", default=31, type=int, help="Negative pmids per batch")
-	parser.add_argument("--per_gpu_eval_batch_size", default=16, type=int, help="Batch size per GPU/CPU for evaluation.")
 	parser.add_argument(
 		"--gradient_accumulation_steps",
 		type=int,
