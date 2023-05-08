@@ -13,7 +13,7 @@ pip install -r requirements.txt
 ## Training datasets
 
 We provide the [BioASQ](http://www.bioasq.org/) question-article pairs at `./datasets/` as the training datasets for demonstration. Due to privacy concerns, we are not able to release the user logs of PubMed.
-Generally, the BioCPT retriever requires three files for training: `training.jsonl`, `qid2info.json`, and `pmid2info.json`. Their formats are shown below:
+Generally, the BioCPT retriever requires three files for training: `training.jsonl`, `qid2info.json`, and `pmid2info.json`. You can convert your data to the example data formats and train the BioCPT retriever. Their formats are shown below:
 ```bash
 # train.jsonl is a jsonline file where each line contains a json of query-article article and the number of click
 $ head train_example.jsonl 
