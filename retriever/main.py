@@ -234,7 +234,7 @@ def main():
 	# Logging and saving steps
 	parser.add_argument("--logging_steps", type=int, default=25, help="Log every X updates steps.")
 	parser.add_argument("--save_steps", type=int, default=2500, help="Save checkpoint every X updates steps.")
-	parser.add_argument("--do_lower_case", default=True, type=int, help="Set this flag if you are using an uncased model. Queries are uncased, so setting default to True.")
+	parser.add_argument("--do_lower_case", default=True, type=bool, help="Set this flag if you are using an uncased model. Queries are uncased, so setting default to True.")
 	parser.add_argument("--seed", type=int, default=2023, help="random seed for initialization")
 
 	# parse the arguments

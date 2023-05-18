@@ -39,7 +39,7 @@ class Biencoder(nn.Module):
 							  attention_mask=q_attention_mask,
 							  token_type_ids=q_token_type_ids)[0][:, 0, :] # B x D
 
-		embed_d = self.bert_q(input_ids=d_input_ids,
+		embed_d = self.bert_d(input_ids=d_input_ids,
 							  attention_mask=d_attention_mask,
 							  token_type_ids=d_token_type_ids)[0][:, 0, :] # B x D
 
