@@ -32,9 +32,8 @@ import numpy as np
 import transformers
 from transformers import (
 	AdamW,
-	BertConfig,
-	BertTokenizer,
-	get_linear_schedule_with_warmup,
+	AutoTokenizer,
+	get_cosine_schedule_with_warmup,
 )
 transformers.logging.set_verbosity_error()
 
@@ -66,7 +65,7 @@ def train(args, train_dataset, qid2info, pmid2info, biencoder, tokenizer):
 		{"params": [p for n, p in biencoder.named_parameters() if any(nd in n for nd in no_decay)], "weight_decay": 0.0},
 	]
 	optimizer = AdamW(optimizer_grouped_parameters, lr=args.learning_rate, eps=args.adam_epsilon)
-	scheduler = get_linear_schedule_with_warmup(
+	scheduler = get_cosine_schedule_with_warmup(
 		optimizer, num_warmup_steps=args.warmup_steps, num_training_steps=t_total
 	)
 
@@ -234,7 +233,6 @@ def main():
 	# Logging and saving steps
 	parser.add_argument("--logging_steps", type=int, default=25, help="Log every X updates steps.")
 	parser.add_argument("--save_steps", type=int, default=2500, help="Save checkpoint every X updates steps.")
-	parser.add_argument("--do_lower_case", default=True, type=bool, help="Set this flag if you are using an uncased model. Queries are uncased, so setting default to True.")
 	parser.add_argument("--seed", type=int, default=2023, help="random seed for initialization")
 
 	# parse the arguments
@@ -265,10 +263,7 @@ def main():
 	set_seed(args)
 
 	# Set tokenizer
-	tokenizer = BertTokenizer.from_pretrained(
-		args.tokenizer_path,
-		do_lower_case=args.do_lower_case
-	)
+	tokenizer = AutoTokenizer.from_pretrained(args.tokenizer_path)
 
 	logger.info("Script parameters %s", args)
 

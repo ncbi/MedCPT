@@ -8,7 +8,7 @@ import os
 import torch
 from torch import nn
 import torch.nn.functional as F
-from transformers import BertModel, BertConfig
+from transformers import AutoModel, AutoConfig
 
 class Biencoder(nn.Module): 
 	def __init__(self, args):
@@ -18,11 +18,11 @@ class Biencoder(nn.Module):
 		q_path = args.bert_q_path
 		d_path = args.bert_d_path
 
-		self.config_q = BertConfig.from_pretrained(q_path)
-		self.bert_q = BertModel.from_pretrained(q_path)
+		self.config_q = AutoConfig.from_pretrained(q_path)
+		self.bert_q = AutoModel.from_pretrained(q_path)
 
-		self.config_d = BertConfig.from_pretrained(d_path)
-		self.bert_d = BertModel.from_pretrained(d_path)
+		self.config_d = AutoConfig.from_pretrained(d_path)
+		self.bert_d = AutoModel.from_pretrained(d_path)
 
 
 	def save_pretrained(self, path):
@@ -37,11 +37,11 @@ class Biencoder(nn.Module):
 					d_input_ids, d_token_type_ids, d_attention_mask, weights):
 		embed_q = self.bert_q(input_ids=q_input_ids,
 							  attention_mask=q_attention_mask,
-							  token_type_ids=q_token_type_ids)[0][:, 0, :] # B x D
+							  token_type_ids=q_token_type_ids).last_hidden_state[:, 0, :] # B x D
 
 		embed_d = self.bert_d(input_ids=d_input_ids,
 							  attention_mask=d_attention_mask,
-							  token_type_ids=d_token_type_ids)[0][:, 0, :] # B x D
+							  token_type_ids=d_token_type_ids).last_hidden_state[:, 0, :] # B x D
 
 		B = embed_q.size(dim=0)
 		qd_scores = torch.matmul(embed_q, torch.transpose(embed_d, 1, 0)) # B x B
