@@ -1,0 +1,4 @@
+beir==1.0.1
+torch==1.7.1+cu110
+tqdm==4.64.1
+transformers==4.24.0
