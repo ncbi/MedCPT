@@ -15,8 +15,9 @@ BioCPT is a first-of-its-kind Contrastive Pre-trained Transformer model trained 
 ## Content
 
 This directory contains:
-- Code for training the BioCPT [retriever](./retriever).
+- Code for training the BioCPT [retriever](./retriever/).
 - Code for training the BioCPT [re-ranker](./reranker/).
+- Code for evaluating the pre-trained model at [evals](./evals/).
 
 ## Data availability
 
