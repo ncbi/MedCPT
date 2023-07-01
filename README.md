@@ -1,4 +1,4 @@
-# BioCPT: Contrastive Pre-trained Transformers with Large-scale PubMed Search Logs for Zero-shot Biomedical Information Retrieval
+# BioCPT: Zero-shot Biomedical IR Model
 
 ## Overview
 
