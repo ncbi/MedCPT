@@ -48,6 +48,10 @@ response = requests.get(url, params=params)
 pmids = response.json()
 ```
 
+## BioCPT weights
+
+If you want to access the BioCPT model weights, please fill out [this form](https://docs.google.com/forms/d/e/1FAIpQLSdtd2OmkI3ep_RadoiTxdVSqvR7rSDssDlAyrpQDaddhv5oOw/viewform?usp=sf_link).
+
 ## Overview
 
 ![image](https://user-images.githubusercontent.com/32558774/236640954-bfa0d9da-50b5-43b3-8326-bf2e3b9f4b33.png)
