@@ -1,5 +1,26 @@
 # BioCPT: Zero-shot Biomedical IR Model
 
+## Overview
+
+![image](https://user-images.githubusercontent.com/32558774/236640954-bfa0d9da-50b5-43b3-8326-bf2e3b9f4b33.png)
+
+BioCPT is a first-of-its-kind Contrastive Pre-trained Transformer model trained with an unprecedented scale of PubMed search logs for zero-shot biomedical information retrieval. BioCPT consists of:
+- A frist-stage dense retriever (BioCPT retriever)
+  - Contains a query encoder (QEnc) and an article encoder (DEnc), both initialized by [PubMedBERT](https://huggingface.co/microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext).   
+  - Trained by 255M query-article pairs from PubMed search logs and in-batch negatives. 
+- A second-stage re-ranker (BioCPT re-ranker)
+  - A transformer cross-encoder (CrossEnc) initialized by [PubMedBERT](https://huggingface.co/microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext).
+  - Trained by 18M semantic query-article pairs and localized negatives from the pre-trained BioCPT retriever. 
+
+## Content
+
+This directory contains:
+- BioCPT API [documentation](https://github.com/ncbi/BioCPT/edit/main/README.md#biocpt-api).
+- BioCPT weights request [form](https://docs.google.com/forms/d/e/1FAIpQLSdtd2OmkI3ep_RadoiTxdVSqvR7rSDssDlAyrpQDaddhv5oOw/viewform?usp=sf_link).
+- Code for training the BioCPT [retriever](./retriever/).
+- Code for training the BioCPT [re-ranker](./reranker/).
+- Code for evaluating the pre-trained model at [evals](./evals/).
+
 ## BioCPT API
 
 We provide 4 endpoints for using the BioCPT model (currently only the retriever):
@@ -52,24 +73,6 @@ pmids = response.json()
 
 If you want to access the BioCPT model weights, please fill out [this form](https://docs.google.com/forms/d/e/1FAIpQLSdtd2OmkI3ep_RadoiTxdVSqvR7rSDssDlAyrpQDaddhv5oOw/viewform?usp=sf_link).
 
-## Overview
-
-![image](https://user-images.githubusercontent.com/32558774/236640954-bfa0d9da-50b5-43b3-8326-bf2e3b9f4b33.png)
-
-BioCPT is a first-of-its-kind Contrastive Pre-trained Transformer model trained with an unprecedented scale of PubMed search logs for zero-shot biomedical information retrieval. BioCPT consists of:
-- A frist-stage dense retriever (BioCPT retriever)
-  - Contains a query encoder (QEnc) and an article encoder (DEnc), both initialized by [PubMedBERT](https://huggingface.co/microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext).   
-  - Trained by 255M query-article pairs from PubMed search logs and in-batch negatives. 
-- A second-stage re-ranker (BioCPT re-ranker)
-  - A transformer cross-encoder (CrossEnc) initialized by [PubMedBERT](https://huggingface.co/microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext).
-  - Trained by 18M semantic query-article pairs and localized negatives from the pre-trained BioCPT retriever. 
-
-## Content
-
-This directory contains:
-- Code for training the BioCPT [retriever](./retriever/).
-- Code for training the BioCPT [re-ranker](./reranker/).
-- Code for evaluating the pre-trained model at [evals](./evals/).
 
 ## Data availability
 
