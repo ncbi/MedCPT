@@ -15,7 +15,7 @@ BioCPT is a first-of-its-kind Contrastive Pre-trained Transformer model trained 
 ## Content
 
 This directory contains:
-- BioCPT API [documentation](https://github.com/ncbi/BioCPT/edit/main/README.md#biocpt-api).
+- BioCPT API [documentation]([https://github.com/ncbi/BioCPT/edit/main/README.md#biocpt-api](https://github.com/ncbi/BioCPT/tree/main#biocpt-api)).
 - BioCPT weights request [form](https://docs.google.com/forms/d/e/1FAIpQLSdtd2OmkI3ep_RadoiTxdVSqvR7rSDssDlAyrpQDaddhv5oOw/viewform?usp=sf_link).
 - Code for training the BioCPT [retriever](./retriever/).
 - Code for training the BioCPT [re-ranker](./reranker/).
