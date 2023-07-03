@@ -29,11 +29,13 @@ We provide 4 endpoints for using the BioCPT model (currently only the retriever)
 3. `docid2vector`: Returns a dense vector for the given corpus and document ID.
 4. `query2docids`: Returns a list of document IDs for the given corpus and free-text query.
 
+We are still deploying the model on the production server, and will release the base `url` and `port` soon.
+
 ### query2vector
 ```python
 import requests
 
-url = "http://130.14.24.78:5000/query2vector"
+url = f"http://{url}:{port}/query2vector"
 params = {"query": "diabetes and CNS"}
 response = requests.get(url, params=params)
 vector = response.json()
@@ -43,7 +45,7 @@ vector = response.json()
 ```python
 import requests
 
-url = "http://130.14.24.78:5000/doc2vector"
+url = f"http://{url}:{port}/doc2vector"
 params = {"title": "Diagnosis and Management of Central Diabetes Insipidus in Adults", "text": "Central diabetes insipidus (CDI) is a clinical syndrome which results from loss or impaired function of vasopressinergic neurons in the hypothalamus/posterior pituitary, resulting in impaired synthesis and/or secretion of arginine vasopressin (AVP). AVP deficiency leads to the inability to concentrate urine and excessive renal water losses, resulting in a clinical syndrome of hypotonic polyuria with compensatory thirst. CDI is caused by diverse etiologies, although it typically develops due to neoplastic, traumatic, or autoimmune destruction of AVP-synthesizing/secreting neurons. This review focuses on the diagnosis and management of CDI, providing insights into the physiological disturbances underpinning the syndrome. Recent developments in diagnostic techniques, particularly the development of the copeptin assay, have improved accuracy and acceptability of the diagnostic approach to the hypotonic polyuria syndrome. We discuss the management of CDI with particular emphasis on management of fluid intake and pharmacological replacement of AVP. Specific clinical syndromes such as adipsic diabetes insipidus and diabetes insipidus in pregnancy as well as management of the perioperative patient with diabetes insipidus are also discussed."}
 response = requests.get(url, params=params)
 vector = response.json()
@@ -53,7 +55,7 @@ vector = response.json()
 ```python
 import requests
 
-url = "http://130.14.24.78:5000/docid2vector"
+url = f"http://{url}:{port}/docid2vector"
 params = {"corpus": "pubmed", "docid": "35771962"}
 response = requests.get(url, params=params)
 vector = response.json()
@@ -63,7 +65,7 @@ vector = response.json()
 ```python
 import requests
 
-url = "http://130.14.24.78:5000/query2docids"
+url = f"http://{url}:{port}/query2docids"
 params = {"corpus": "pubmed", "query": "What are the relations between lead and heart damage?"}
 response = requests.get(url, params=params)
 pmids = response.json()
