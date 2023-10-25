@@ -15,8 +15,7 @@ MedCPT is a first-of-its-kind Contrastive Pre-trained Transformer model trained 
 ## Content
 
 This directory contains:
-- MedCPT API [documentation](https://github.com/ncbi/MedCPT/tree/main#MedCPT-api).
-- MedCPT weights request [form](https://docs.google.com/forms/d/e/1FAIpQLSdtd2OmkI3ep_RadoiTxdVSqvR7rSDssDlAyrpQDaddhv5oOw/viewform?usp=sf_link).
+- MedCPT weights.
 - Code for training the MedCPT [retriever](./retriever/).
 - Code for training the MedCPT [re-ranker](./reranker/).
 - Code for evaluating the pre-trained model at [evals](./evals/).
