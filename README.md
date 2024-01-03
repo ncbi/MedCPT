@@ -158,6 +158,93 @@ tensor([  6.9363,  -8.2063,  -8.7692, -12.3450, -10.4416, -15.8475])
 ```
 Higher scores indicate higher relevance.
 
+### Searching PubMed with MedCPT
+
+Please first download the MedCPT embeddings of PubMed articles here: https://ftp.ncbi.nlm.nih.gov/pub/lu/MedCPT/pubmed_embeddings/. 
+
+For example, let's download the latest 1M articles. Please run:
+
+```bash
+wget https://ftp.ncbi.nlm.nih.gov/pub/lu/MedCPT/pubmed_embeddings/embeds_chunk_37.npy # these are the embeddings
+wget https://ftp.ncbi.nlm.nih.gov/pub/lu/MedCPT/pubmed_embeddings/pmids_chunk_37.json # these are the coresponding PMIDs
+wget https://ftp.ncbi.nlm.nih.gov/pub/lu/MedCPT/pubmed_embeddings/pubmed_chunk_37.json # these are the PMID content
+```
+
+Then run the following example code:
+```python
+import faiss
+import torch
+import numpy as np
+import json
+from transformers import AutoTokenizer, AutoModel
+
+# building the Faiss index of PubMed articles, let's use the flat inner product index
+pubmed_embeds = np.load("embeds_chunk_37.npy")
+index = faiss.IndexFlatIP(768)
+index.add(pubmed_embeds)
+
+# these are the corresponding pmids for the article embeddings
+pmids = json.load(open("pmids_chunk_37.json"))
+
+model = AutoModel.from_pretrained("ncbi/MedCPT-Query-Encoder")
+tokenizer = AutoTokenizer.from_pretrained("ncbi/MedCPT-Query-Encoder")
+
+queries = [
+    "How to treat diabetes with COVID-19?", 
+    "Are mRNA vaccines safe for children?"
+]
+
+with torch.no_grad():
+    # tokenize the queries
+    encoded = tokenizer(
+        queries, 
+        truncation=True, 
+        padding=True, 
+        return_tensors='pt', 
+        max_length=64,
+    )
+    
+    # encode the queries (use the [CLS] last hidden states as the representations)
+    embeds = model(**encoded).last_hidden_state[:, 0, :]
+    
+    # search the Faiss index
+    scores, inds = index.search(embeds, k=10)
+    
+# print the search results
+for idx, query in enumerate(queries):
+    print(f"Query: {query}")
+    
+    for score, ind in zip(scores[idx], inds[idx]):
+        print(f"PMID: {pmids[ind]}; Score: {score}")
+```
+
+The output will be:
+```bash
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Query: How to treat diabetes with COVID-19?
+PMID: 36890686; Score: 67.43043518066406
+PMID: 36882971; Score: 67.43043518066406
+PMID: 36201275; Score: 67.2848892211914
+PMID: 36369292; Score: 67.06027221679688
+PMID: 36089790; Score: 66.66815948486328
+PMID: 36028964; Score: 66.57908630371094
+PMID: 36100987; Score: 66.34353637695312
+PMID: 36188145; Score: 66.2936019897461
+PMID: 36579192; Score: 66.26624298095703
+PMID: 36060943; Score: 66.16267395019531
+Query: Are mRNA vaccines safe for children?
+PMID: 36621604; Score: 70.50843811035156
+PMID: 36974643; Score: 70.31710815429688
+PMID: 36160352; Score: 69.89913940429688
+PMID: 36048728; Score: 69.77267456054688
+PMID: 36404633; Score: 68.93994903564453
+PMID: 36634021; Score: 68.82601928710938
+PMID: 36694479; Score: 68.5921859741211
+PMID: 36881800; Score: 68.4502182006836
+PMID: 36689319; Score: 68.39824676513672
+PMID: 36405931; Score: 68.20221710205078
+```
+
 ## Data availability
 
 Due to [privacy](https://www.nlm.nih.gov/web_policies.html#privacy_security) concerns, we are not able to release the PubMed user logs. As a surrogate, we provide the question-article pair data from [BioASQ](http://www.bioasq.org/) in this repo as example training datasets. You can convert your data to the example data formats and train the MedCPT model.
