@@ -165,9 +165,9 @@ Please first download the MedCPT embeddings of PubMed articles here: https://ftp
 For example, let's download the latest 1M articles. Please run:
 
 ```bash
-wget https://ftp.ncbi.nlm.nih.gov/pub/lu/MedCPT/pubmed_embeddings/embeds_chunk_37.npy # these are the embeddings
-wget https://ftp.ncbi.nlm.nih.gov/pub/lu/MedCPT/pubmed_embeddings/pmids_chunk_37.json # these are the coresponding PMIDs
-wget https://ftp.ncbi.nlm.nih.gov/pub/lu/MedCPT/pubmed_embeddings/pubmed_chunk_37.json # these are the PMID content
+wget https://ftp.ncbi.nlm.nih.gov/pub/lu/MedCPT/pubmed_embeddings/embeds_chunk_36.npy # these are the embeddings
+wget https://ftp.ncbi.nlm.nih.gov/pub/lu/MedCPT/pubmed_embeddings/pmids_chunk_36.json # these are the coresponding PMIDs
+wget https://ftp.ncbi.nlm.nih.gov/pub/lu/MedCPT/pubmed_embeddings/pubmed_chunk_36.json # these are the PMID content
 ```
 
 Then run the following example code:
@@ -179,12 +179,12 @@ import json
 from transformers import AutoTokenizer, AutoModel
 
 # building the Faiss index of PubMed articles, let's use the flat inner product index
-pubmed_embeds = np.load("embeds_chunk_37.npy")
+pubmed_embeds = np.load("embeds_chunk_36.npy")
 index = faiss.IndexFlatIP(768)
 index.add(pubmed_embeds)
 
 # these are the corresponding pmids for the article embeddings
-pmids = json.load(open("pmids_chunk_37.json"))
+pmids = json.load(open("pmids_chunk_36.json"))
 
 model = AutoModel.from_pretrained("ncbi/MedCPT-Query-Encoder")
 tokenizer = AutoTokenizer.from_pretrained("ncbi/MedCPT-Query-Encoder")
