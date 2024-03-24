@@ -1,6 +1,6 @@
-# BioCPT re-ranker
+# MedCPT re-ranker
 
-This repo contains the code for training the BioCPT re-ranker (Part B in the figure below). 
+This repo contains the code for training the MedCPT re-ranker (Part B in the figure below). 
 ![image](https://user-images.githubusercontent.com/32558774/236641890-aaf42b3f-b114-4da1-87c7-a7d47ae29fbb.png)
 
 ## Requirements
@@ -13,7 +13,7 @@ pip install -r requirements.txt
 ## Training datasets
 
 We provide the [BioASQ](http://www.bioasq.org/) question-article pairs at `./datasets/` as the training datasets for demonstration. Due to privacy concerns, we are not able to release the user logs of PubMed.
-Generally, the BioCPT re-ranker requires three files for training: `training.json`, `qid2info.json`, and `pmid2info.json`.  You can convert your data to the example data formats and train the BioCPT model. Their formats are shown below:
+Generally, the MedCPT re-ranker requires three files for training: `training.json`, `qid2info.json`, and `pmid2info.json`.  You can convert your data to the example data formats and train the MedCPT model. Their formats are shown below:
 ```bash
 # train.jsonl is a json list file where each entry contains a dict of Dict{'qid': Str(qid), 'pos_pmids': List[List[Str(pmid), Int(click)]], 'neg_pmids': List[Str(pmid)]}
 $ head train_example.json
@@ -57,8 +57,8 @@ $ head pmid2info_example.json
     "6650562": [
 ```
 
-## Training BioCPT on BioASQ
-You can directly train the BioCPT re-ranker with the provided BioASQ datasets by running:
+## Training MedCPT on BioASQ
+You can directly train the MedCPT re-ranker with the provided BioASQ datasets by running:
 ```bash
 bash run.sh
 ```
