@@ -1,6 +1,6 @@
-# BioCPT retriever
+# MedCPT retriever
 
-This repo contains the code for training the BioCPT retriever (Part A in the figure below). 
+This repo contains the code for training the MedCPT retriever (Part A in the figure below). 
 ![image](https://user-images.githubusercontent.com/32558774/236641890-aaf42b3f-b114-4da1-87c7-a7d47ae29fbb.png)
 
 ## Requirements
@@ -13,7 +13,7 @@ pip install -r requirements.txt
 ## Training datasets
 
 We provide the [BioASQ](http://www.bioasq.org/) question-article pairs at `./datasets/` as the training datasets for demonstration. Due to privacy concerns, we are not able to release the user logs of PubMed.
-Generally, the BioCPT retriever requires three files for training: `training.jsonl`, `qid2info.json`, and `pmid2info.json`. You can convert your data to the example data formats and train the BioCPT retriever. Their formats are shown below:
+Generally, the MedCPT retriever requires three files for training: `training.jsonl`, `qid2info.json`, and `pmid2info.json`. You can convert your data to the example data formats and train the MedCPT retriever. Their formats are shown below:
 ```bash
 # train.jsonl is a jsonline file where each line contains a json of query-article article and the number of click
 $ head train_example.jsonl 
@@ -54,8 +54,8 @@ $ head pmid2info_example.json
     ],
 ```
 
-## Training BioCPT on BioASQ
-You can directly train the BioCPT retriever with the provided BioASQ datasets by running:
+## Training MedCPT on BioASQ
+You can directly train the MedCPT retriever with the provided BioASQ datasets by running:
 ```bash
 bash run.sh
 ```
