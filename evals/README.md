@@ -1,6 +1,6 @@
 # Evaluations
 
-Evaluate the BioCPT models on biomedical IR datasets with [BEIR](https://github.com/beir-cellar/beir).
+Evaluate the MedCPT models on biomedical IR datasets with [BEIR](https://github.com/beir-cellar/beir).
 
 ## Requirements
 
